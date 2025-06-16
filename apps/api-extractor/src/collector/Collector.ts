@@ -827,17 +827,29 @@ export class Collector {
       let declaredReleaseTag: ReleaseTag = ReleaseTag.None;
       let extraReleaseTags: boolean = false;
 
-      if (modifierTagSet.isPublic()) {
+      if (
+        this.extractorConfig.publicTagName
+          ? modifierTagSet.hasTagName(this.extractorConfig.publicTagName)
+          : modifierTagSet.isPublic()
+      ) {
         declaredReleaseTag = ReleaseTag.Public;
       }
-      if (modifierTagSet.isBeta()) {
+      if (
+        this.extractorConfig.betaTagName
+          ? modifierTagSet.hasTagName(this.extractorConfig.betaTagName)
+          : modifierTagSet.isBeta()
+      ) {
         if (declaredReleaseTag !== ReleaseTag.None) {
           extraReleaseTags = true;
         } else {
           declaredReleaseTag = ReleaseTag.Beta;
         }
       }
-      if (modifierTagSet.isAlpha()) {
+      if (
+        this.extractorConfig.alphaTagName
+          ? modifierTagSet.hasTagName(this.extractorConfig.alphaTagName)
+          : modifierTagSet.isAlpha()
+      ) {
         if (declaredReleaseTag !== ReleaseTag.None) {
           extraReleaseTags = true;
         } else {

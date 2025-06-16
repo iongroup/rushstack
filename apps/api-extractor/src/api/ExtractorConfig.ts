@@ -216,6 +216,9 @@ interface IExtractorConfigParameters {
   alphaTrimmedFilePath: string;
   betaTrimmedFilePath: string;
   publicTrimmedFilePath: string;
+  alphaTagName: string;
+  betaTagName: string;
+  publicTagName: string;
   omitTrimmingComments: boolean;
   tsdocMetadataEnabled: boolean;
   tsdocMetadataFilePath: string;
@@ -353,6 +356,10 @@ export class ExtractorConfig {
   /** {@inheritDoc IConfigDtsRollup.omitTrimmingComments} */
   public readonly omitTrimmingComments: boolean;
 
+  public readonly alphaTagName: string;
+  public readonly betaTagName: string;
+  public readonly publicTagName: string;
+
   /** {@inheritDoc IConfigTsdocMetadata.enabled} */
   public readonly tsdocMetadataEnabled: boolean;
   /** {@inheritDoc IConfigTsdocMetadata.tsdocMetadataFilePath} */
@@ -407,6 +414,9 @@ export class ExtractorConfig {
     alphaTrimmedFilePath,
     betaTrimmedFilePath,
     publicTrimmedFilePath,
+    alphaTagName,
+    betaTagName,
+    publicTagName,
     omitTrimmingComments,
     tsdocMetadataEnabled,
     tsdocMetadataFilePath,
@@ -440,6 +450,9 @@ export class ExtractorConfig {
     this.alphaTrimmedFilePath = alphaTrimmedFilePath;
     this.betaTrimmedFilePath = betaTrimmedFilePath;
     this.publicTrimmedFilePath = publicTrimmedFilePath;
+    this.alphaTagName = alphaTagName;
+    this.betaTagName = betaTagName;
+    this.publicTagName = publicTagName;
     this.omitTrimmingComments = omitTrimmingComments;
     this.tsdocMetadataEnabled = tsdocMetadataEnabled;
     this.tsdocMetadataFilePath = tsdocMetadataFilePath;
@@ -1167,6 +1180,9 @@ export class ExtractorConfig {
       let betaTrimmedFilePath: string = '';
       let alphaTrimmedFilePath: string = '';
       let publicTrimmedFilePath: string = '';
+      let alphaTagName: string = '';
+      let betaTagName: string = '';
+      let publicTagName: string = '';
       let omitTrimmingComments: boolean = false;
 
       if (configObject.dtsRollup) {
@@ -1189,6 +1205,31 @@ export class ExtractorConfig {
         publicTrimmedFilePath = ExtractorConfig._resolvePathWithTokens(
           'publicTrimmedFilePath',
           configObject.dtsRollup.publicTrimmedFilePath,
+          tokenContext
+        );
+        betaTrimmedFilePath = ExtractorConfig._resolvePathWithTokens(
+          'betaTrimmedFilePath',
+          configObject.dtsRollup.betaTrimmedFilePath,
+          tokenContext
+        );
+        publicTrimmedFilePath = ExtractorConfig._resolvePathWithTokens(
+          'publicTrimmedFilePath',
+          configObject.dtsRollup.publicTrimmedFilePath,
+          tokenContext
+        );
+        alphaTagName = ExtractorConfig._resolvePathWithTokens(
+          'alphaTagName',
+          configObject.dtsRollup.alphaTagName,
+          tokenContext
+        );
+        betaTagName = ExtractorConfig._resolvePathWithTokens(
+          'betaTagName',
+          configObject.dtsRollup.betaTagName,
+          tokenContext
+        );
+        publicTagName = ExtractorConfig._resolvePathWithTokens(
+          'publicTagName',
+          configObject.dtsRollup.publicTagName,
           tokenContext
         );
         omitTrimmingComments = !!configObject.dtsRollup.omitTrimmingComments;
@@ -1233,6 +1274,9 @@ export class ExtractorConfig {
         alphaTrimmedFilePath,
         betaTrimmedFilePath,
         publicTrimmedFilePath,
+        alphaTagName,
+        betaTagName,
+        publicTagName,
         omitTrimmingComments,
         tsdocMetadataEnabled,
         tsdocMetadataFilePath,

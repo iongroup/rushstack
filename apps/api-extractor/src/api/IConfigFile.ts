@@ -300,6 +300,10 @@ export interface IConfigDtsRollup {
    */
   publicTrimmedFilePath?: string;
 
+  alphaTagName?: string;
+  betaTagName?: string;
+  publicTagName?: string;
+
   /**
    * When a declaration is trimmed, by default it will be replaced by a code comment such as
    * "Excluded from this release type: exampleMember".  Set "omitTrimmingComments" to true to remove the

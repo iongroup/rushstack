@@ -436,7 +436,7 @@
       "shouldPublish": true
     },
     {
-      "packageName": "@microsoft/api-extractor",
+      "packageName": "@ionweb/api-extractor",
       "projectFolder": "apps/api-extractor",
       "reviewCategory": "libraries",
       "shouldPublish": true,
@@ -1247,7 +1247,7 @@
       "reviewCategory": "libraries",
       "shouldPublish": false,
       "decoupledLocalDependencies": [
-        "@microsoft/api-extractor",
+        "@ionweb/api-extractor",
         "@rushstack/heft-node-rig",
         "@rushstack/heft",
         "@rushstack/eslint-patch",
